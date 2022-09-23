@@ -12,7 +12,6 @@ class Soldier {
          this.health = this.health - damage
     }
 }
-    
 // Viking
 class Viking extends Soldier {
     constructor(nameParam, healthParam, strengthParam) {
@@ -68,18 +67,34 @@ class War {
         this.saxonArmy.push(saxonObj)
     }
     vikingAttack =() => {
-        randomSaxon = Math.random() / this.saxonArmy.length;
-        ramdomInt = Math.floor(random);
-        if (Saxon.receiveDamage() = Viking.strength) {
-            this.saxonArmy.pop()
-        }
         
+        randomSaxon = Math.random() * 2;
+        randomInt = Math.floor(randomSaxon);
+        if (randomInt = 0) {
+            if (Saxon.receiveDamage() = Viking.attack() ) {
+            this.saxonArmy.pop()
+            }
+        }  
     }
     saxonAttack =() => {
-
+        if (Saxon.receiveDamage() <= Viking.attack() ) {
+        this.saxonArmy.pop()
+        }
     }
     showStatus =() => {
 
     }
 
 }
+
+// randomSaxon = Math.random() * 2;
+// randomInt = Math.floor(randomSaxon);
+// if (randomInt = 0) {
+//     if (Saxon.receiveDamage() = Viking.attack() ) {
+//     this.saxonArmy.pop()
+//     }
+// } else if (randomInt = 1) {
+//     if (Viking.receiveDamage()) {
+//         this.vikingArmy.pop()
+//     }
+// }
