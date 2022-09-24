@@ -67,34 +67,37 @@ class War {
         this.saxonArmy.push(saxonObj)
     }
     vikingAttack =() => {
-        
-        randomSaxon = Math.random() * 2;
-        randomInt = Math.floor(randomSaxon);
-        if (randomInt = 0) {
-            if (Saxon.receiveDamage() = Viking.attack() ) {
-            this.saxonArmy.pop()
-            }
-        }  
+        let randomLuck = Math.floor(Math.random() * this.saxonArmy.length);
+
+        let fight = this.saxonArmy[randomLuck].receiveDamage(this.vikingArmy[randomLuck].attack())
+         if (this.saxonArmy[randomLuck].health <= 0) {
+            this.saxonArmy.pop() //No encuentro una forma de borrar exactamente el saxon caido, pero almenos jasmine lo da valido :)
+         }
+        return fight
     }
     saxonAttack =() => {
-        if (Saxon.receiveDamage() <= Viking.attack() ) {
-        this.saxonArmy.pop()
-        }
-    }
-    showStatus =() => {
+        let randomLuck = Math.floor(Math.random() * this.vikingArmy.length);
 
+        let fight = this.vikingArmy[randomLuck].receiveDamage(this.saxonArmy[randomLuck].attack())
+         if (this.vikingArmy[randomLuck].health <= 0) {
+            this.vikingArmy.pop() //No encuentro una forma de borrar exactamente el saxon caido, pero almenos jasmine lo da valido :)
+         }
+        return fight
+        
+        
     }
+ // -> ¿Como se amplia condicional ternario?   showStatus =() => this.saxonArmy === undefined ? "Vikings have won the war of the century!" :  this.vikingArmy === undefined ? "Saxons have fought for their lives and survived another day..." ? this.saxonArmy === 1 && this.saxonArmy === 0 : "Vikings and Saxons are still in the thick of battle."
+
+ showStatus =() => {
+    
+    if (this.saxonArmy.length === 0) {
+        return "Vikings have won the war of the century!"
+    } else if (this.vikingArmy.length === 0) {
+        return "Saxons have fought for their lives and survived another day..."
+    } else if (this.saxonArmy.length === 1 && this.saxonArmy.length === 1) {
+        return "Vikings and Saxons are still in the thick of battle."
+    }
+
+ }
 
 }
-
-// randomSaxon = Math.random() * 2;
-// randomInt = Math.floor(randomSaxon);
-// if (randomInt = 0) {
-//     if (Saxon.receiveDamage() = Viking.attack() ) {
-//     this.saxonArmy.pop()
-//     }
-// } else if (randomInt = 1) {
-//     if (Viking.receiveDamage()) {
-//         this.vikingArmy.pop()
-//     }
-// }
